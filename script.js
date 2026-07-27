@@ -1,0 +1,1 @@
+console.log("GuideBloom 已启动 🌱");
