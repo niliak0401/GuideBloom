@@ -1,100 +1,178 @@
 import questions from "./questions.js";
 
+
 console.log("GuideBloom 已启动 🌱");
 
 console.log(questions);
 
-const currentQuestion = questions[0];
+
+// 当前题目编号
+
+let currentIndex = 0;
+
+
+// 当前题目
+
+let currentQuestion;
+
+
+// 用户选择
 
 let selectedAnswer = null;
 
-const optionsContainer =
-document.getElementById("options");
 
 
-currentQuestion.options.forEach(option => {
+// 渲染题目
 
-    const button = document.createElement("button");
-
-    button.innerHTML = option;
+function renderQuestion(){
 
 
-    button.onclick = function(){
+    // 防止超过题库
+
+    if(currentIndex >= questions.length){
+
+        document.getElementById("question").innerHTML =
+        "🎉 已完成所有题目！";
 
 
-        // 清除其他按钮的选中状态
+        document.getElementById("options").innerHTML = "";
 
-        document
-        .querySelectorAll("#options button")
-        .forEach(btn => {
+        document.getElementById("answer").style.display = "none";
 
-            btn.classList.remove("selected");
+        return;
 
-        });
+    }
 
 
-        // 给当前按钮添加选中状态
 
-        button.classList.add("selected");
-
-
-        selectedAnswer = option;
+    currentQuestion = questions[currentIndex];
 
 
-        console.log("选择了:", selectedAnswer);
-
-    };
+    selectedAnswer = null;
 
 
-    optionsContainer.appendChild(button);
 
-});
+    const questionElement =
+    document.getElementById("question");
 
-document.getElementById("question").innerHTML =
+
+    const optionsContainer =
+    document.getElementById("options");
+
+
+    const answerBox =
+    document.getElementById("answer");
+
+
+
+    // 清空旧内容
+
+    optionsContainer.innerHTML = "";
+
+    answerBox.innerHTML = "";
+
+    answerBox.style.display = "none";
+
+
+
+    // 显示题目
+
+    questionElement.innerHTML =
     currentQuestion.question;
 
 
-document.getElementById("answer").innerHTML =
-`
-<p>答案：${currentQuestion.answer}</p>
 
-<p>
-解析：${currentQuestion.explanation}
-</p>
+    // 创建选项按钮
 
-<p>
-助记：${currentQuestion.memoryTip}
-</p>
-`;
+    currentQuestion.options.forEach(option => {
 
 
-window.showAnswer = function(){
 
-    document.getElementById("answer").style.display = "block";
+        const button =
+        document.createElement("button");
+
+
+
+        button.innerHTML = option;
+
+
+
+        button.onclick = function(){
+
+
+
+            document
+            .querySelectorAll("#options button")
+            .forEach(btn => {
+
+                btn.classList.remove("selected");
+
+            });
+
+
+
+            button.classList.add("selected");
+
+
+
+            selectedAnswer = option;
+
+
+
+            console.log("选择了:", selectedAnswer);
+
+
+
+        };
+
+
+
+        optionsContainer.appendChild(button);
+
+
+    });
+
 
 }
+
+
+
+
+// 提交答案
+
 window.submitAnswer = function(){
 
-    const answerBox = document.getElementById("answer");
+
+
+    const answerBox =
+    document.getElementById("answer");
+
 
 
     if(selectedAnswer === null){
 
+
         answerBox.style.display = "block";
+
 
         answerBox.innerHTML =
         `
-        <p>⚠️ 请先选择一个答案</p>
+        <p>⚠️ 请先选择答案</p>
         `;
 
+
         return;
+
     }
+
 
 
     answerBox.style.display = "block";
 
 
+
     if(selectedAnswer === currentQuestion.answer){
+
 
         answerBox.innerHTML =
         `
@@ -111,27 +189,62 @@ window.submitAnswer = function(){
         </p>
         `;
 
+
     }else{
+
 
         answerBox.innerHTML =
         `
         <p>❌ 回答错误</p>
+
 
         <p>
         正确答案：
         ${currentQuestion.answer}
         </p>
 
+
         <p>
         解析：
         ${currentQuestion.explanation}
         </p>
 
+
         <p>
         助记：
         ${currentQuestion.memoryTip}
         </p>
+
         `;
+
+
     }
 
+
 };
+
+
+
+
+// 下一题
+
+window.nextQuestion = function(){
+
+
+    currentIndex++;
+
+
+    console.log("当前题目:", currentIndex);
+
+
+
+    renderQuestion();
+
+
+};
+
+
+
+// 页面第一次加载
+
+renderQuestion();
