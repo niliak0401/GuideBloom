@@ -7,3 +7,18 @@ body {
 h1 {
     color: #2e8b57;
 }
+
+#options button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+#options button.selected {
+    background-color: #d9f7be;
+    border: 2px solid #52c41a;
+}
