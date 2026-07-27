@@ -1,24 +1,133 @@
-body {
+body{
+
     font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 100px;
-}
 
-h1 {
-    color: #2e8b57;
-}
+    background:#f7f7f7;
 
-#options button {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
 }
 
 
-#options button.selected {
-    background-color: #d9f7be;
-    border: 2px solid #52c41a;
+.container{
+
+    width:600px;
+
+    margin:50px auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:12px;
+
+}
+
+
+h1{
+
+    text-align:center;
+
+}
+
+
+#progress{
+
+    color:#666;
+
+    margin-bottom:20px;
+
+}
+
+
+#options button{
+
+
+    display:block;
+
+    width:100%;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border-radius:8px;
+
+    border:1px solid #ddd;
+
+    background:white;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    font-size:16px;
+
+}
+
+
+
+#options button:hover{
+
+    background:#f0f0f0;
+
+}
+
+
+
+#options button.selected{
+
+    border:2px solid #4caf50;
+
+}
+
+
+
+#options button.correct{
+
+
+    background:#d4edda;
+
+    border:2px solid green;
+
+}
+
+
+
+#options button.wrong{
+
+
+    background:#f8d7da;
+
+    border:2px solid red;
+
+}
+
+
+
+button{
+
+
+    padding:10px 20px;
+
+    margin:10px;
+
+    border-radius:8px;
+
+    border:none;
+
+    cursor:pointer;
+
+}
+
+
+
+#answer{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#fafafa;
+
+    border-radius:8px;
+
 }

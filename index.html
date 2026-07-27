@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>GuideBloom</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
 
-    <h1>🌱 GuideBloom</h1>
 
-    <div class="quiz-card">
+    <div class="container">
 
-    <h2>英语导游证练习</h2>
 
-    <p id="question"></p>
+        <h1>🌱 GuideBloom</h1>
 
-    <div id="options"></div>
 
-    <button onclick="submitAnswer()">
-    提交答案
-    </button>
-    <button onclick="nextQuestion()">
-    下一题
-</button>
+        <p>英语导游证练习</p>
 
-<div id="answer" style="display:none;"></div>
+
+        <div id="progress"></div>
+
+
+        <h2 id="question"></h2>
+
+
+        <div id="options"></div>
+
+
+        <button onclick="submitAnswer()">
+            提交答案
+        </button>
+
+
+        <button onclick="nextQuestion()">
+            下一题
+        </button>
+
+
+        <div id="answer"></div>
+
+
+    </div>
+
 
     <script type="module" src="script.js"></script>
 
+
 </body>
+
 </html>
