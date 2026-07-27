@@ -1,4 +1,4 @@
-import questions from "./questions.js";
+let questions = [];
 
 
 console.log("GuideBloom 已启动 🌱");
@@ -277,5 +277,16 @@ window.nextQuestion=function(){
 
 
 
+loadQuestions();
 
-renderQuestion();
+async function loadQuestions(){
+
+    const response = await fetch("./data/questions.json");
+
+    questions = await response.json();
+
+    console.log("题库加载成功:", questions);
+
+    renderQuestion();
+
+}
